@@ -36,7 +36,7 @@
             "esri/layers/GraphicsLayer",
         ], function (Map,  MapView, Basemap, TileLayer, Home, ScaleBar, Zoom, Sketch,GraphicsLayer) {
             //自定义底图:切片图层-TileLayer
-            
+            //本处使用的是geoq官方地图
             var basemap = new Basemap({
                 baseLayers: [
                     new TileLayer({
@@ -70,7 +70,7 @@
             
 
             view.ui.add(sketch, "top-right");
-
+            //
             var homeWidget = new Home({
                 view: view
             });
