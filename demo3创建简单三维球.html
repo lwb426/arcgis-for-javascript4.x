@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>learn3添加底图控件</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://lwb.geoscenewh.cn/4.15/esri/css/main.css" />
+    <script src="http://lwb.geoscenewh.cn/4.15/init.js"></script>
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/SceneView",
+            "esri/Basemap",
+            "esri/layers/TileLayer",
+            "esri/widgets/Home",
+            "esri/widgets/ScaleBar"
+        ], function (Map, SceneView, Basemap, TileLayer, Home, ScaleBar) {
+            //自定义底图:切片图层-TileLayer
+            var basemap = new Basemap({
+                baseLayers: [
+                    new TileLayer({
+                        url: "http://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer",
+                        title: "Basemap"
+                    })
+                ],
+                title: "basemap",
+                id: "basemap"
+            });
+            //图分离
+            var map = new Map({
+                basemap: basemap
+            });
+            //视
+            var view = new SceneView({
+                container: "viewDiv",
+                map: map,
+                zoom: 5,
+                center: [106, 33]
+            });
+
+            var homeWidget = new Home({
+                view: view
+            });
+            // adds the home widget to the top left corner of 
+            view.ui.add(homeWidget, "top-left");
+
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+</body>
+
+</html>
