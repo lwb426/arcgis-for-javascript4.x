@@ -30,7 +30,6 @@
 			FindTask, FindParameters, 
 			SimpleLineSymbol,SimpleFillSymbol,Graphic) {   
                 var map = new esri.Map("mapDiv");
-				//地图服务的URL
                 var MapServer = "https://lwb.geoscenewh.cn/server/rest/services/xuexiaotest/MapServer";
                 var layer = new esri.layers.ArcGISDynamicMapServiceLayer(MapServer);
                 map.addLayer(layer)
